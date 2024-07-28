@@ -245,7 +245,6 @@ html {
 
 .main {
     background-color: #141414;
-    min-height: 100vh; /* Ensure full viewport height */
     padding: 0; /* Ensure no extra padding */
     min-height: 100vh;
     
@@ -262,6 +261,7 @@ html {
     z-index: 1;
     width: 100%;
     max-width: 1300px;
+    min-height: 750px;
     padding: 0 50px;
 }
 
