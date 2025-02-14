@@ -534,3 +534,18 @@ section {
     animation: slideIn 1s ease-out forwards;
 }
 
+/* Game */
+
+.game-container {
+    text-align: center;
+    padding: 20px;
+    font-family: "Press Start 2P", sans-serif;
+    color: white;
+}
+
+
+canvas {
+    background-color: white;
+    border: 2px solid black;
+}
+
