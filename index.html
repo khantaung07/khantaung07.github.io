@@ -10,91 +10,83 @@
     <script src="https://kit.fontawesome.com/93f56192d7.js" crossorigin="anonymous"></script>
 </head> 
 <body>
-    <nav class="navbar">
-        <div class="navbar__container">
-            <a href="/" id="navbar__logo"><i class="fas fa-rocket"></i>  Khant Aung</a>
-            <div class="navbar__toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="navbar__menu">
-                <li class="navbar__item">
-                    <a href="#main" class="navbar__links">
-                        Home
-                    </a>
-                </li>
-                <li class="navbar__item">
-                    <a href="#about" class="navbar__links">
-                        About me
-                    </a>
-                </li>
-                <li class="navbar__item">
-                    <a href="game.html" class="navbar__links">Game</a>
-                </li>
-                
-                <li class="navbar__btn">
-                    <a href="https://github.com/khantaung07" class="button">
-                        <img src="assets/github.png" alt="GitHub Logo" class="button__image">
-                        GitHub
-                    </a>
-                </li>
-                <li class="navbar__btn">
-                    <a href="https://www.linkedin.com/in/khantaung07/" class="button">
-                        <img src="assets/linkedin.png" alt="LinkedIn Logo" class="button__image">
-                        LinkedIn
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Main Section -->
-    <div class="main">
-        <section id="main">
-            <div class="main__container">
-                <div class="main__content">
-                    <h1>Hello, I'm Khant</h1>
-                    <h2>Studying Computer Science and Law at USYD</h2>
-                    <p>Welcome to my website &#128512</p>
-                    <button class="main__btn"><a href="mailto:khantaung07@gmail.com">Contact Me</a></button>
-                </div>
-                <div class="main__img--container">
-                    <img src="images/khant.svg" alt="pic" id="main__img">
-                </div>
-            </div>
-        </section>
+    <!-- Intro Space Screen -->
+    <div id="intro-screen">
+        <canvas id="starfield"></canvas>
+        <button id="enter-button">Enter</button>
+        <audio id="beep-sound" src="assets/beep.wav" preload="auto"></audio>
     </div>
 
-    
-    <!-- About Me Section -->
+    <!-- Website -->
+    <div id="main-site" style="opacity: 0; transition: opacity 1s ease;">
+        <nav class="navbar">
+            <div class="navbar__container">
+                <a href="/" id="navbar__logo"><i class="fas fa-rocket"></i> Khant Aung</a>
+                <div class="navbar__toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="navbar__menu">
+                    <li class="navbar__item"><a href="#main" class="navbar__links">Home</a></li>
+                    <li class="navbar__item"><a href="#about" class="navbar__links">About me</a></li>
+                    <li class="navbar__item"><a href="game.html" class="navbar__links">Game</a></li>
+                    <li class="navbar__btn">
+                        <a href="https://github.com/khantaung07" class="button">
+                            <img src="assets/github.png" alt="GitHub Logo" class="button__image"> GitHub
+                        </a>
+                    </li>
+                    <li class="navbar__btn">
+                        <a href="https://www.linkedin.com/in/khantaung07/" class="button">
+                            <img src="assets/linkedin.png" alt="LinkedIn Logo" class="button__image"> LinkedIn
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-<div class="about">
-    <section id="about">
-        <div class="section__container">
-            <h1>A little bit about me</h1>
-            <div class="section__pic-container">
-                <img src="assets/umaeatz.png" alt="Umaeatz pic" class="about__pic">
-            </div>
-            <div class="about-details-container">
-                <div class="details-container">
-                </li>
+        <!-- Main Section -->
+        <div class="main">
+            <section id="main">
+                <div class="main__container">
+                    <div class="main__content">
+                        <h1>Hello, I'm Khant</h1>
+                        <h2>Studying Computer Science and Law at USYD</h2>
+                        <p>Welcome to my website &#128512</p>
+                        <button class="main__btn"><a href="mailto:khantaung07@gmail.com">Contact Me</a></button>
+                    </div>
+                    <div class="main__img--container">
+                        <img src="images/khant.svg" alt="pic" id="main__img">
+                    </div>
                 </div>
-                <div class="text-container">
-                    <p>
-                        I am going into my 3rd year studing a Bachelor of Science (Computer Science) and Bachelor of Laws student at the University of Sydney. 
-                        I am passionate about technology and eager to apply my skills in real-world scenarios (hence this website).
-                        In my free time, I enjoy working on personal projects, playing and watching football (COYG) and video games (mostly Counter-Strike).
-                    </p>
-                </div>
-            </div>
+            </section>
         </div>
-    </section>
-</div>
-</div>
 
-    <!-- Insert dinosaur webgame in the future -->
+        <!-- About Me Section -->
+        <div class="about">
+            <section id="about">
+                <div class="section__container">
+                    <h1>A little bit about me</h1>
+                    <div class="section__pic-container">
+                        <img src="assets/umaeatz.png" alt="Umaeatz pic" class="about__pic">
+                    </div>
+                    <div class="about-details-container">
+                        <div class="details-container"></div>
+                        <div class="text-container">
+                            <p>
+                                I am going into my 3rd year studying a Bachelor of Science (Computer Science) and Bachelor of Laws at the University of Sydney. 
+                                I am passionate about technology and eager to apply my skills in real-world scenarios (hence this website).
+                                In my free time, I enjoy working on personal projects, playing and watching football (COYG), and video games (mostly Counter-Strike).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div> <!-- End of #main-site -->
 
+    <!-- Scripts -->
+    <script src="intro.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
