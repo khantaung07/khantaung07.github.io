@@ -18,8 +18,7 @@ function rankValue(value: MaybeStat | undefined, loading: boolean) {
 
 export default function PlayerCard() {
   const [data, setData] = useState<Cs2Data | null>(null)
-  const [state, setState] = useState<'loading' | 'ready' | 'error'>('loading')
-  const [error, setError] = useState('')
+  const [state, setState] = useState<'loading' | 'ready' | 'error' | 'rate-limited'>('loading')
   const [request, setRequest] = useState(0)
 
   useEffect(() => {
@@ -29,8 +28,7 @@ export default function PlayerCard() {
     }).catch(reason => {
       if (active) {
         setData(null)
-        setError(reason instanceof Error ? reason.message : 'unavailable')
-        setState('error')
+        setState(reason instanceof Error && reason.message === 'rate_limited' ? 'rate-limited' : 'error')
       }
     })
     return () => { active = false }
@@ -39,10 +37,10 @@ export default function PlayerCard() {
   const refresh = () => {
     setData(null)
     setState('loading')
-    setError('')
     setRequest(value => value + 1)
   }
   const loading = state === 'loading'
+  const failed = state === 'error' || state === 'rate-limited'
   const profile = data?.profile
   const recent = data?.recent
   const sample = recent && isStat(recent.matchesPlayed)
@@ -65,7 +63,6 @@ export default function PlayerCard() {
       <div className="player-details">
         <p className="item-label">{portfolio.gaming.game}</p>
         <h3>{portfolio.gaming.handle}</h3>
-        <p className="player-name">{portfolio.gaming.playerName}</p>
       </div>
       <div className="player-profile-links" aria-label="Player profiles">
         <a href={profiles.steam} className="player-profile-link" aria-label="Steam profile" title="Steam profile"><img src="/brands/steam.svg" width="20" height="20" alt="" /></a>
@@ -78,8 +75,8 @@ export default function PlayerCard() {
       <div className="player-ranks">
         <section className="player-rank premier-rank" aria-label="Premier rank">
           <p className="rank-label"><span className="rank-marker" aria-hidden="true">CS</span>Premier</p>
-          <div className="rank-values"><div><span className="rank-caption">Current</span><strong>{state === 'error' ? '—' : rankValue(profile?.ranks.premier, loading)}</strong></div>
-            <div className="rank-best" title="Highest Premier rating returned across Leetify’s tracked CS2 seasons"><span className="rank-caption">Best</span><strong>{formatStat(premierBest).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</strong></div></div>
+          <div className="rank-values"><div><span className="rank-caption">Current</span><strong>{failed ? '—' : rankValue(profile?.ranks.premier, loading)}</strong></div>
+            <div className="rank-best" title="Highest Premier rating returned across Leetify’s tracked CS2 seasons"><span className="rank-caption">Best</span><strong>{isStat(premierBest) ? premierBest.toLocaleString('en-AU') : '—'}</strong></div></div>
         </section>
         <section className="player-rank faceit-rank" aria-label="FACEIT rank">
           <p className="rank-label"><img src="/brands/faceit.svg" width="16" height="16" alt="" />FACEIT</p>
@@ -104,13 +101,13 @@ export default function PlayerCard() {
 
     <footer className="player-footer">
       <div className="player-source-status">
-        <p className={`player-status${state === 'error' ? ' has-error' : ''}`} role="status">
-          {loading ? 'Loading statistics…' : state === 'error'
-            ? error === 'rate_limited' ? 'Leetify rate limit reached. Try again shortly.' : 'Statistics temporarily unavailable.'
+        <p className={`player-status${failed ? ' has-error' : ''}`} role="status">
+          {loading ? 'Loading statistics…' : failed
+            ? state === 'rate-limited' ? 'Leetify rate limit reached. Try again shortly.' : 'Statistics temporarily unavailable.'
             : recent ? sample : 'Leetify profile summary'}
         </p>
         {state === 'ready' && (!recent || !data?.seasons) && <p className="player-partial-note">{!recent && !data?.seasons ? 'Recent stats and best ranks unavailable.' : !recent ? 'K/D and HS Kill % unavailable.' : 'Best ranks unavailable.'}</p>}
-        <button type="button" className="player-refresh" onClick={refresh} disabled={loading}>{state === 'error' ? 'Try again' : 'Refresh'}<span aria-hidden="true"> ↻</span></button>
+        <button type="button" className="player-refresh" onClick={refresh} disabled={loading}>{failed ? 'Try again' : 'Refresh'}<span aria-hidden="true"> ↻</span></button>
       </div>
       <a className="leetify-attribution" href="https://leetify.com/" aria-label="Data Provided by Leetify"><img src="/brands/leetify-data-provided-by.png" alt="Data Provided by Leetify" width="135" height="58" /></a>
     </footer>

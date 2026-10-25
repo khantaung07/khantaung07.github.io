@@ -3,26 +3,25 @@
  */
 export interface PortfolioLink {
   label: string
-  href: string | null
-  icon?: 'mail' | 'github' | 'linkedin'
+  href: string
+  icon: 'mail' | 'github' | 'linkedin'
 }
 
 export interface TimelineEntry {
   id: string
-  title: string | null
-  organisation: string | null
-  location: string | null
-  period: string | null
+  title: string
+  organisation: string
+  location: string
+  period: string
   description: string | null
-  href: string | null
 }
 
 export interface Project {
   id: string
-  title: string | null
-  description: string | null
-  tags: string[]
-  links: PortfolioLink[]
+  title: string
+  description: string
+  href: string
+  inProgress?: boolean
 }
 
 export interface Highlight {
@@ -81,7 +80,6 @@ export const portfolio = {
         location: 'Sydney, Australia',
         period: 'Nov 2026 - Feb 2027',
         description: null,
-        href: null,
       },
       {
         id: 'usyd-ca',
@@ -90,7 +88,6 @@ export const portfolio = {
         location: 'Sydney, Australia',
         period: 'Aug 2025 - Jun 2026',
         description: 'Helped first-year students with CS coursework through university Learning Hub.',
-        href: null,
       },
       {
         id: 'google-asdi',
@@ -99,24 +96,45 @@ export const portfolio = {
         location: 'Sydney, Australia',
         period: 'Nov 2025 - Feb 2026',
         description: 'Improved internal infrastructure tooling at Google Cloud Storage.',
-        href: null,
       },
     ] satisfies TimelineEntry[],
   },
   projects: {
     title: 'Projects',
-    note: '(including this website)',
+    note: '(see github for more)',
     items: Array.of<Project>(
-      { id: 'project-01', title: null, description: null, tags: [], links: [] },
-      { id: 'project-02', title: null, description: null, tags: [], links: [] },
+      {
+        id: 'p2p-file-transfer',
+        title: 'Peer-to-Peer File Transfer',
+        description: 'A multithreaded file-transfer system in C with parallel peer connections and cryptographic integrity verification.',
+        href: 'https://github.com/khantaung07/p2p_file_transfer',
+      },
+      {
+        id: 'cs2-match-predictor',
+        title: 'CS2 Match Predictor',
+        description: 'Predicts CS2 match outcomes using team ratings, recent form, and map-specific performance.',
+        href: 'https://github.com/khantaung07/cs2-forecast',
+      },
+      {
+        id: 'tower-defence-game',
+        title: 'Tower Defence Game',
+        description: 'A Java tower defence game with modular architecture and smooth 60 FPS gameplay.',
+        href: 'https://github.com/khantaung07/wtd',
+      },
+      {
+        id: 'cross-platform-stickies',
+        title: 'Cross-platform improved stickies',
+        description: 'A cross-platform sticky notes app.',
+        href: '',
+        inProgress: true,
+      },
     ),
   },
   gaming: {
     title: 'Stats',
     note: 'The only stats that matter',
     game: 'Counter-Strike 2',
-    playerName: null,
-    handle: 'k4tt3n' as string | null,
+    handle: 'k4tt3n',
     profiles: {
       steam: 'https://steamcommunity.com/id/ceedeez/',
       faceit: 'https://www.faceit.com/en/players/k4tt3n',
@@ -132,15 +150,6 @@ export const portfolio = {
   },
   placeholders: {
     badge: 'To add',
-    role: 'Your experience goes here',
-    organisation: 'Role & organisation to add',
-    dates: 'Dates to add',
-    location: 'Location to add',
-    project: 'Project',
-    projectDescription: 'Description',
-    projectLink: 'Project links to add',
-    playerHandle: 'Player handle to add',
-    profileLink: 'Link to add',
     clip: 'Highlight',
     clipDescription: 'Clip description',
     clipMedia: 'Clip placeholder',

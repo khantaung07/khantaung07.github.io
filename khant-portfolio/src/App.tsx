@@ -19,13 +19,10 @@ function Icon({ name }: { name: IconName }) {
   return <svg className="icon" viewBox={isBrand ? '0 0 24 24' : '0 0 20 20'} fill={isBrand ? 'currentColor' : 'none'} stroke={isBrand ? 'none' : 'currentColor'} strokeWidth="1.4" strokeLinecap="square" strokeLinejoin="miter" aria-hidden="true">{iconPaths[name]}</svg>
 }
 
-function ContentLink({ link, className = '' }: { link: PortfolioLink; className?: string }) {
-  if (!link.href) {
-    return <span className={`missing-link ${className}`}><span>{link.label}</span><span className="missing-link-note">{portfolio.placeholders.profileLink}</span></span>
-  }
+function ContentLink({ link }: { link: PortfolioLink }) {
   return (
-    <a className={`content-link ${className}`} href={link.href}>
-      {link.icon && <Icon name={link.icon} />}
+    <a className="content-link" href={link.href}>
+      <Icon name={link.icon} />
       {link.label}
       {!link.href.startsWith('mailto:') && <Icon name="arrow" />}
     </a>
@@ -37,22 +34,17 @@ function SectionHeading({ number, title, note, id }: { number: string; title: st
 }
 
 function TimelineRow({ entry }: { entry: TimelineEntry }) {
-  const title = entry.title ?? portfolio.placeholders.role
   return (
-    <li className={`timeline-row${!entry.title ? ' is-placeholder' : ''}`}>
+    <li className="timeline-row">
       <span className="timeline-marker" aria-hidden="true" />
       <div className="timeline-content">
-        <h4>{entry.href ? <a href={entry.href}>{title}<Icon name="arrow" /></a> : title}</h4>
-        <p>{entry.organisation ?? portfolio.placeholders.organisation}</p>
+        <h4>{entry.title}</h4>
+        <p>{entry.organisation}</p>
         {entry.description && <p className="timeline-description">{entry.description}</p>}
       </div>
       <div className="timeline-meta">
-        <span className={`timeline-period${entry.period ? '' : ' is-missing'}`}>
-          {entry.period ?? portfolio.placeholders.dates}
-        </span>
-        <span className="timeline-location">
-          {entry.location ?? portfolio.placeholders.location}
-        </span>
+        <span className="timeline-period">{entry.period}</span>
+        <span className="timeline-location">{entry.location}</span>
       </div>
     </li>
   )
@@ -97,7 +89,6 @@ function App() {
                 {portfolio.currently.summary}
               </p>
             </div>
-            {/* Replace this reserved stage with the interactive pixel-art component next. */}
             <figure className="artwork-stage" aria-label={portfolio.hero.artwork.label}>
               {portfolio.hero.artwork.src ? <img className="hero-artwork" src={portfolio.hero.artwork.src} alt={portfolio.hero.artwork.alt} /> : <>
                 <span className="artwork-corner top-left" aria-hidden="true" /><span className="artwork-corner top-right" aria-hidden="true" />
@@ -118,11 +109,9 @@ function App() {
 
           <section className="content-section" id="projects" aria-labelledby="projects-title">
             <SectionHeading number="02" title={portfolio.projects.title} note={portfolio.projects.note} id="projects-title" />
-            <div className="project-grid">{portfolio.projects.items.map((project, index) => <article className={`project-card${project.title ? '' : ' is-placeholder'}`} key={project.id}>
-              <div className="project-card-top"><span className="project-index">{String(index + 1).padStart(2, '0')}</span>{!project.title && <span className="placeholder-badge">{portfolio.placeholders.badge}</span>}<Icon name={project.title ? 'code' : 'plus'} /></div>
-              <h3>{project.title ?? `${portfolio.placeholders.project} ${String(index + 1).padStart(2, '0')}`}</h3><p>{project.description ?? portfolio.placeholders.projectDescription}</p>
-              {project.tags.length > 0 && <ul className="project-tags">{project.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>}
-              <div className="project-links">{project.links.length > 0 ? project.links.map(link => <ContentLink link={link} key={link.label} />) : <span className="placeholder-caption">{portfolio.placeholders.projectLink}</span>}</div>
+            <div className="project-grid">{portfolio.projects.items.map((project, index) => <article className="project-card" key={project.id}>
+              <div className="project-card-top"><span className="project-index">{String(index + 1).padStart(2, '0')}</span>{project.inProgress && <span className="project-status">In progress</span>}<Icon name="code" /></div>
+              <h3><a className="content-link project-title-link" href={project.href} onClick={event => { if (!project.href) event.preventDefault() }}><span>{project.title}</span><Icon name="arrow" /></a></h3><p>{project.description}</p>
             </article>)}</div>
           </section>
 

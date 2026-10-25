@@ -4,9 +4,8 @@ export interface Cs2Data {
   profile: {
     privacy_mode: string
     steam64_id: string
-    name: string
     winrate: MaybeStat
-    ranks: { premier: MaybeStat; faceit: MaybeStat; leetify: MaybeStat }
+    ranks: { premier: MaybeStat; leetify: MaybeStat }
     rating: { aim: MaybeStat; clutch: MaybeStat; utility: MaybeStat; positioning: MaybeStat }
     stats: { preaim: MaybeStat; reaction_time_ms: MaybeStat }
   }

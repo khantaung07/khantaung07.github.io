@@ -46,36 +46,27 @@ h2 { font-size: 22px; line-height: 1.5; letter-spacing: -0.5px; }
 .experience-list { border-top: 1px solid var(--line); }
 .timeline-row { display: grid; grid-template-columns: 7px minmax(0, 1fr) minmax(130px, auto); gap: 13px; padding: 24px 0; align-items: start; border-bottom: 1px solid var(--line); }
 .timeline-marker { width: 5px; height: 5px; margin-top: 8px; background: var(--blue); }
-.timeline-row.is-placeholder .timeline-marker { background: none; border: 1px solid var(--quiet); }
 .timeline-content { min-width: 0; overflow-wrap: anywhere; }
 .timeline-content h4 { font-size: 13px; font-weight: 500; line-height: 1.75; }
-.timeline-content h4 a { display: inline-flex; align-items: center; gap: 8px; }
-.timeline-content h4 .icon { width: 12px; height: 12px; }
 .timeline-content p { font-size: 11px; color: var(--muted); margin-top: 5px; }
 .timeline-content .timeline-description { margin-top: 10px; }
 .timeline-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; min-width: 0; padding-top: 3px; text-align: right; }
 .timeline-period { font-size: 10px; color: var(--muted); }
 .timeline-location { max-width: 100%; font-size: 10px; color: var(--quiet); overflow-wrap: anywhere; }
-.is-missing { color: var(--quiet); }
-.timeline-row.is-placeholder h4 { color: #a6adb4; }
 .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .project-card { display: flex; flex-direction: column; min-width: 0; padding: 25px 28px; border: 1px solid var(--line); border-radius: 5px; background: #171a1c; }
-.project-card.is-placeholder { border-style: dashed; }
 .project-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
 .project-index { color: var(--quiet); font-size: 11px; }
 .project-card-top > .icon { margin-left: auto; width: 16px; height: 16px; color: var(--quiet); }
-.placeholder-badge { font-size: 9px; line-height: 1.8; padding: 1px 7px; border: 1px solid #3e382c; color: #cbb283; background: #26231d; border-radius: 2px; }
+.project-status { font-size: 9px; line-height: 1.8; padding: 1px 7px; border: 1px solid #3e382c; color: #cbb283; background: #26231d; border-radius: 2px; }
 .project-card h3 { font-size: 16px; font-weight: 500; }
+.project-card h3 .project-title-link { max-width: 100%; font-size: inherit; }
+.project-title-link > span { min-width: 0; overflow-wrap: anywhere; }
 .project-card > p { max-width: 370px; color: var(--muted); font-size: 12px; line-height: 1.85; margin: 10px 0 0; }
-.project-links { display: flex; flex-wrap: wrap; gap: 10px 20px; padding-top: 26px; margin-top: auto; }
-.placeholder-caption { font-size: 10px; color: var(--quiet); }
-.project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
-.project-tags li { padding: 2px 8px; background: var(--surface-raised); color: var(--blue); font-size: 10px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 .player-card { background: #191d20; border: 1px solid var(--line); border-left: 2px solid #c49b53; border-radius: 5px; padding: 20px 22px; }
 .player-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .player-details h3 { font-family: var(--heading); font-size: 18px; line-height: 1.5; }
-.player-name { font-size: 10px; color: var(--quiet); margin-top: 4px; }
 .player-profile-links { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
 .player-profile-link { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid #39424a; border-radius: 3px; }
 .player-profile-link:hover { background: #252b30; border-color: var(--muted); }
@@ -107,8 +98,6 @@ h2 { font-size: 22px; line-height: 1.5; letter-spacing: -0.5px; }
 .player-refresh:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 .leetify-attribution { flex: 0 0 135px; }
 .leetify-attribution img { width: 135px; height: auto; }
-.missing-link { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 12px; }
-.missing-link-note { font-size: 9px; color: var(--quiet); }
 .highlights-heading { width: fit-content; margin: 32px 0 16px; font-family: var(--heading); font-size: 16.5px; }
 .highlights-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 .highlight-card { min-width: 0; }
@@ -192,9 +181,8 @@ h2 { font-size: 22px; line-height: 1.5; letter-spacing: -0.5px; }
   .player-card { padding: 18px 16px; }
   .player-details h3 { font-size: 16.5px; }
   .player-header { gap: 12px; }
-  .player-profile-links { gap: 8px; }
   .player-ranks { grid-template-columns: 1fr; gap: 8px; }
-  .player-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 8px; }
+  .player-stats { gap: 12px 8px; }
   .player-metric dt { font-size: 8px; }
   .player-metric dd { font-size: 14px; }
   .player-footer { flex-wrap: wrap; gap: 12px; }
