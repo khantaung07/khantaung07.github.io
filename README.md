@@ -1,5 +1,3 @@
 # Khant Aung
 
-Personal portfolio built with React, TypeScript, Vite, and plain CSS.
-
-The app lives in [`khant-portfolio/`](khant-portfolio/).
+[Personal website](https://khantaung07.github.io) — experience, projects, and CS2 stats.

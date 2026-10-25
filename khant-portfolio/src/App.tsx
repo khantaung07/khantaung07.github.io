@@ -1,4 +1,5 @@
 import { portfolio, type Highlight, type PortfolioLink, type TimelineEntry } from './portfolio'
+import PlayerCard from './PlayerCard'
 import './App.css'
 
 const iconPaths = {
@@ -127,14 +128,7 @@ function App() {
 
           <section className="content-section" id="stats" aria-labelledby="gaming-title">
             <SectionHeading number="03" title={portfolio.gaming.title} note={portfolio.gaming.note} id="gaming-title" />
-            <article className="player-card" aria-label={portfolio.gaming.game}>
-              <div className="player-details">
-                <p className="item-label">{portfolio.gaming.game}</p>
-                <h3>{portfolio.gaming.handle ?? portfolio.placeholders.playerHandle}</h3>
-                <p className="player-name">{portfolio.gaming.playerName}</p>
-              </div>
-              <div className="player-links">{portfolio.gaming.links.map(link => <ContentLink link={link} key={link.label} className="player-link" />)}</div>
-            </article>
+            <PlayerCard />
             <h3 className="highlights-heading">{portfolio.gaming.highlightsTitle}</h3>
             <ul className="highlights-grid">{portfolio.gaming.highlights.map((clip, index) => <HighlightCard key={clip.id} clip={clip} index={index} />)}</ul>
           </section>

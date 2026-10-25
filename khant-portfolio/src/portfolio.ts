@@ -53,7 +53,7 @@ export const portfolio = {
   },
   hero: {
     name,
-    introduction: 'Programmer, lawyer in an alternate timeline, and professional CS2 amateur.',
+    introduction: 'Programmer, lawyer in an alternate timeline, professional CS2 amateur.',
     links: [
       { label: 'Email', href: 'mailto:khantaung07@gmail.com', icon: 'mail' },
       { label: 'GitHub', href: 'https://github.com/khantaung07', icon: 'github' },
@@ -115,12 +115,13 @@ export const portfolio = {
     title: 'Stats',
     note: 'The only stats that matter',
     game: 'Counter-Strike 2',
-    playerName: name,
+    playerName: null,
     handle: 'k4tt3n' as string | null,
-    links: [
-      { label: 'FACEIT', href: null },
-      { label: 'Leetify', href: null },
-    ] satisfies PortfolioLink[],
+    profiles: {
+      steam: 'https://steamcommunity.com/id/ceedeez/',
+      faceit: 'https://www.faceit.com/en/players/k4tt3n',
+      leetify: 'https://leetify.com/public/profile/76561198156780616',
+    },
     highlightsTitle: 'Highlights',
     highlights: [
       { id: 'clip-01', title: null, description: null, href: null, poster: null },
