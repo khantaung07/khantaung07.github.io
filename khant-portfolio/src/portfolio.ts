@@ -46,9 +46,9 @@ export const portfolio = {
     homeLabel: `${name} — back to top`,
     skipLabel: 'Skip to content',
     items: [
-      { label: 'Background', href: '#background' },
+      { label: 'Experience', href: '#experience' },
       { label: 'Projects', href: '#projects' },
-      { label: 'Stats', href: '#cs2' },
+      { label: 'Stats', href: '#stats' },
     ],
   },
   hero: {
@@ -71,11 +71,9 @@ export const portfolio = {
     label: 'Currently:',
     summary: 'law at USyd · learning C++ for CP',
   },
-  background: {
-    title: 'Experience & education',
-    experienceLabel: 'Experience',
-    educationLabel: 'Education',
-    experience: [
+  experience: {
+    title: 'Experience',
+    items: [
       {
         id: 'google-swe-intern',
         title: '(Incoming) Software Engineering Intern',
@@ -101,26 +99,6 @@ export const portfolio = {
         location: 'Sydney, Australia',
         period: 'Nov 2025 - Feb 2026',
         description: 'Improved internal infrastructure tooling at Google Cloud Storage.',
-        href: null,
-      },
-    ] satisfies TimelineEntry[],
-    education: [
-      {
-        id: 'usyd-law',
-        title: 'Law',
-        organisation: 'University of Sydney',
-        location: 'Sydney, Australia',
-        period: 'Expected 2027',
-        description: null,
-        href: null,
-      },
-      {
-        id: 'usyd-computer-science',
-        title: 'Computer Science',
-        organisation: 'University of Sydney',
-        location: 'Sydney, Australia',
-        period: '2025',
-        description: null,
         href: null,
       },
     ] satisfies TimelineEntry[],

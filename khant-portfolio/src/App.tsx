@@ -108,12 +108,11 @@ function App() {
             </figure>
           </section>
 
-          <section className="content-section" id="background" aria-labelledby="background-title">
-            <SectionHeading number="01" title={portfolio.background.title} id="background-title" />
-            <div className="background-grid">
-              <div><h3 className="group-label">{portfolio.background.experienceLabel}</h3><ul>{portfolio.background.experience.map(entry => <TimelineRow key={entry.id} entry={entry} />)}</ul></div>
-              <div><h3 className="group-label">{portfolio.background.educationLabel}</h3><ul>{portfolio.background.education.map(entry => <TimelineRow key={entry.id} entry={entry} />)}</ul></div>
-            </div>
+          <section className="content-section" id="experience" aria-labelledby="experience-title">
+            <SectionHeading number="01" title={portfolio.experience.title} id="experience-title" />
+            <ul className="experience-list">
+              {portfolio.experience.items.map(entry => <TimelineRow key={entry.id} entry={entry} />)}
+            </ul>
           </section>
 
           <section className="content-section" id="projects" aria-labelledby="projects-title">
@@ -126,10 +125,14 @@ function App() {
             </article>)}</div>
           </section>
 
-          <section className="content-section" id="cs2" aria-labelledby="gaming-title">
+          <section className="content-section" id="stats" aria-labelledby="gaming-title">
             <SectionHeading number="03" title={portfolio.gaming.title} note={portfolio.gaming.note} id="gaming-title" />
             <article className="player-card" aria-label={portfolio.gaming.game}>
-              <div className="player-details"><p className="item-label">{portfolio.gaming.game}</p><h3>{portfolio.gaming.playerName}</h3><p className="player-handle">{portfolio.gaming.handle ?? portfolio.placeholders.playerHandle}</p></div>
+              <div className="player-details">
+                <p className="item-label">{portfolio.gaming.game}</p>
+                <h3>{portfolio.gaming.handle ?? portfolio.placeholders.playerHandle}</h3>
+                <p className="player-name">{portfolio.gaming.playerName}</p>
+              </div>
               <div className="player-links">{portfolio.gaming.links.map(link => <ContentLink link={link} key={link.label} className="player-link" />)}</div>
             </article>
             <h3 className="highlights-heading">{portfolio.gaming.highlightsTitle}</h3>

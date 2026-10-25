@@ -43,8 +43,7 @@ h1 { font-size: 44px; line-height: 1.25; letter-spacing: -1.5px; margin: 0 0 18p
 h2 { font-size: 22px; line-height: 1.5; letter-spacing: -0.5px; }
 .section-heading > p { font-size: 10px; color: var(--quiet); }
 .item-label { color: var(--quiet); font-size: 10px; margin-bottom: 3px; }
-.background-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
-.group-label { font-family: var(--heading); font-size: 11px; color: var(--quiet); text-transform: uppercase; letter-spacing: 1.2px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.experience-list { border-top: 1px solid var(--line); }
 .timeline-row { display: grid; grid-template-columns: 7px minmax(0, 1fr) minmax(130px, auto); gap: 13px; padding: 24px 0; align-items: start; border-bottom: 1px solid var(--line); }
 .timeline-marker { width: 5px; height: 5px; margin-top: 8px; background: var(--blue); }
 .timeline-row.is-placeholder .timeline-marker { background: none; border: 1px solid var(--quiet); }
@@ -74,7 +73,7 @@ h2 { font-size: 22px; line-height: 1.5; letter-spacing: -0.5px; }
 .project-tags li { padding: 2px 8px; background: var(--surface-raised); color: var(--blue); font-size: 10px; }
 .player-card { display: flex; align-items: center; gap: 22px; background: #191d20; border: 1px solid var(--line); border-left: 2px solid #c49b53; border-radius: 5px; padding: 28px; }
 .player-details h3 { font-family: var(--heading); font-size: 22px; line-height: 1.5; }
-.player-handle { font-size: 10px; color: var(--quiet); margin-top: 4px; }
+.player-name { font-size: 10px; color: var(--quiet); margin-top: 4px; }
 .player-links { margin-left: auto; display: flex; align-items: center; gap: 12px; }
 .player-link { padding: 10px 15px; border: 1px solid #39424a; border-radius: 3px; color: var(--blue); }
 .missing-link { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 12px; }
@@ -114,7 +113,6 @@ h2 { font-size: 22px; line-height: 1.5; letter-spacing: -0.5px; }
   .hero { padding: 28px; gap: 28px; }
   h1 { font-size: 33px; letter-spacing: -1px; }
   .artwork-stage { min-height: 320px; padding-inline: 18px; }
-  .background-grid { gap: 30px; }
   .player-link.missing-link { min-width: 102px; }
   .highlights-grid { gap: 12px; }
 }
@@ -130,7 +128,6 @@ h2 { font-size: 22px; line-height: 1.5; letter-spacing: -0.5px; }
   .content-section { padding-top: 44px; }
   .section-heading { margin-bottom: 20px; }
   .section-heading > p { margin-left: 29px; }
-  .background-grid { gap: 28px; }
   .project-grid { gap: 14px; }
   .project-card { padding: 22px 20px; }
   .player-card { flex-wrap: wrap; gap: 18px; padding: 24px; }

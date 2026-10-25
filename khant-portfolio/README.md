@@ -11,12 +11,12 @@ npm run preview
 
 ## Edit content
 
-All portfolio copy, navigation, links, education, experience, projects, player information, and four highlight slots live in **`src/portfolio.ts`**. The page title and description are also read from this file.
+All portfolio copy, navigation, links, experience, projects, player information, and four highlight slots live in **`src/portfolio.ts`**. The page title and description are also read from this file.
 
 The `name` constant is shared by the hero, player card, footer, and page metadata.
 
 - Keep unknown values as `null`. The page shows a labelled placeholder without creating a fake link.
-- Add experience or education by adding another object to the relevant array.
+- Add experience by adding another object to `experience.items`.
 - Fill a project’s `title`, `description`, `tags`, and `links` to replace its placeholder.
 - Add the FACEIT and Leetify URLs and player handle in `gaming`.
 - For highlights, set `title`, `description`, `href`, and optionally `poster`. A supplied URL makes the whole clip card a real link. Put your local media in `public/clips/` and use paths like `/clips/highlight-01.mp4`.
