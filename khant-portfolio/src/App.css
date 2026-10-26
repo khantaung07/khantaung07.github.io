@@ -101,21 +101,12 @@ h2 { font-size: 22px; line-height: 1.5; letter-spacing: -0.5px; }
 .highlights-heading { width: fit-content; margin: 32px 0 16px; font-family: var(--heading); font-size: 16.5px; }
 .highlights-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 .highlight-card { min-width: 0; }
-.highlight-link { display: block; }
-.clip-preview { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border: 1px dashed #35404a; border-radius: 4px; background: #192026; display: grid; place-items: center; }
-.clip-preview > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.clip-number { position: absolute; top: 10px; left: 12px; color: #94a7b5; font-size: 9px; z-index: 1; }
-.clip-status { position: absolute; top: 10px; right: 12px; color: #94a7b5; font-size: 9px; z-index: 1; }
-.clip-play { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid #394953; color: #7e9aab; border-radius: 50%; z-index: 1; }
-.clip-play .icon { width: 16px; height: 16px; margin-left: 2px; }
-.clip-placeholder-label { position: absolute; bottom: 10px; inset-inline: 0; text-align: center; font-size: 9px; color: #94a7b5; }
-.has-poster .clip-play { color: #fff; background: #111315c9; }
-.highlight-link:hover .clip-preview { border-color: var(--blue); }
-.highlight-link:hover h4 { color: var(--blue); }
-.clip-caption { display: grid; grid-template-columns: 1fr auto; gap: 0 10px; margin-top: 12px; }
+.clip-preview { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid #35404a; border-radius: 4px; background: #111315; }
+.clip-preview > video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; }
+.clip-preview:focus-within { border-color: var(--yellow); }
+.clip-number { position: absolute; top: 8px; left: 8px; padding: 1px 6px; color: #e6e7e9; background: #111315cc; border-radius: 2px; font-size: 9px; pointer-events: none; }
+.clip-caption { margin-top: 10px; }
 .clip-caption h4 { font-size: 11px; font-weight: 500; line-height: 1.8; }
-.clip-caption > .icon { width: 12px; height: 12px; margin-top: 3px; }
-.clip-caption p { grid-column: 1 / -1; color: var(--quiet); font-size: 10px; margin-top: 3px; }
 .site-footer { margin-top: 72px; padding: 28px 0 36px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 20px; font-family: var(--heading); }
 .footer-name { font-size: 11px; }
 .footer-name > span { color: var(--yellow); }
@@ -155,7 +146,6 @@ h2 { font-size: 22px; line-height: 1.5; letter-spacing: -0.5px; }
   .player-header { flex-wrap: wrap; }
   .player-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .highlights-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; }
-  .clip-preview { aspect-ratio: 16 / 9; }
   .site-footer { margin-top: 52px; }
 }
 
@@ -187,12 +177,7 @@ h2 { font-size: 22px; line-height: 1.5; letter-spacing: -0.5px; }
   .player-metric dd { font-size: 14px; }
   .player-footer { flex-wrap: wrap; gap: 12px; }
   .highlights-grid { gap: 20px 12px; }
-  .clip-status { display: none; }
-  .clip-preview { aspect-ratio: 4 / 3; }
-  .clip-placeholder-label { font-size: 8px; bottom: 9px; }
-  .clip-play { width: 30px; height: 30px; }
   .clip-caption h4 { font-size: 10px; }
-  .clip-caption p { font-size: 9px; }
   .site-footer { padding-block: 24px; align-items: flex-start; }
   .site-footer > a { font-size: 9px; gap: 8px; padding-top: 1px; }
 }

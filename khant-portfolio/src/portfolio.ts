@@ -26,10 +26,9 @@ export interface Project {
 
 export interface Highlight {
   id: string
-  title: string | null
-  description: string | null
-  href: string | null
-  poster: string | null
+  title: string
+  src: string
+  poster: string
 }
 
 const name = 'Khant Aung'
@@ -142,17 +141,11 @@ export const portfolio = {
     },
     highlightsTitle: 'Highlights',
     highlights: [
-      { id: 'clip-01', title: null, description: null, href: null, poster: null },
-      { id: 'clip-02', title: null, description: null, href: null, poster: null },
-      { id: 'clip-03', title: null, description: null, href: null, poster: null },
-      { id: 'clip-04', title: null, description: null, href: null, poster: null },
+      { id: 'clip-01', title: 'USP 1v5', src: '/clips/clip1.mp4', poster: '/clips/clip1.jpg' },
+      { id: 'clip-02', title: 'AWP 4K', src: '/clips/clip2.mp4', poster: '/clips/clip2.jpg' },
+      { id: 'clip-03', title: 'Deagle 1v4', src: '/clips/clip3.mp4', poster: '/clips/clip3.jpg' },
+      { id: 'clip-04', title: 'AWP 1v4', src: '/clips/clip4.mp4', poster: '/clips/clip4.jpg' },
     ] satisfies Highlight[],
-  },
-  placeholders: {
-    badge: 'To add',
-    clip: 'Highlight',
-    clipDescription: 'Clip description',
-    clipMedia: 'Clip placeholder',
   },
   footer: {
     name,

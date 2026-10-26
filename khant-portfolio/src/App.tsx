@@ -8,7 +8,6 @@ const iconPaths = {
   github: <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.043-1.61-4.043-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.087-.744.083-.729.083-.729 1.205.084 1.838 1.237 1.838 1.237 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.304-5.467-1.334-5.467-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.52 11.52 0 0 1 12 5.804c1.02.005 2.045.138 3.003.404 2.291-1.552 3.297-1.23 3.297-1.23.654 1.652.243 2.873.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.807 5.624-5.48 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.694.825.576C20.565 21.795 24 17.298 24 12c0-6.627-5.373-12-12-12Z" />,
   linkedin: <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124ZM7.119 20.452H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z" />,
   code: <><path d="m6 5-4 5 4 5m8-10 4 5-4 5M12 3 8 17" /></>,
-  play: <path d="m7 4 9 6-9 6Z" />,
   plus: <path d="M10 4v12M4 10h12" />,
 }
 
@@ -51,19 +50,16 @@ function TimelineRow({ entry }: { entry: TimelineEntry }) {
 }
 
 function HighlightCard({ clip, index }: { clip: Highlight; index: number }) {
-  const number = String(index + 1).padStart(2, '0')
-  const title = clip.title ?? `${portfolio.placeholders.clip} ${number}`
-  const content = <>
-    <div className={`clip-preview${clip.poster ? ' has-poster' : ''}`}>
-      {clip.poster && <img src={clip.poster} alt="" loading="lazy" />}
-      <span className="clip-number" aria-hidden="true">{number}</span>
-      {!clip.href && <span className="clip-status">{portfolio.placeholders.badge}</span>}
-      <span className="clip-play" aria-hidden="true"><Icon name="play" /></span>
-      {!clip.href && <span className="clip-placeholder-label">{portfolio.placeholders.clipMedia}</span>}
+  return <li className="highlight-card">
+    <div className="clip-preview">
+      <video controls playsInline preload="none" poster={clip.poster} aria-label={clip.title}>
+        <source src={clip.src} type="video/mp4" />
+        <a href={clip.src}>Watch {clip.title}</a>
+      </video>
+      <span className="clip-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
     </div>
-    <div className="clip-caption"><h4>{title}</h4>{clip.href && <Icon name="arrow" />}<p>{clip.description ?? portfolio.placeholders.clipDescription}</p></div>
-  </>
-  return <li className="highlight-card">{clip.href ? <a className="highlight-link" href={clip.href}>{content}</a> : content}</li>
+    <div className="clip-caption"><h4>{clip.title}</h4></div>
+  </li>
 }
 
 function App() {
