@@ -29,8 +29,7 @@ export function loadCs2Data(): Promise<Cs2Data> {
   // Share only a pending request (including React's development effect replay).
   // No resolved responses, snapshots, localStorage, or background polling.
   if (!inFlight) {
-    const base = (import.meta.env.VITE_CS2_API_BASE_URL || '').replace(/\/$/, '')
-    inFlight = fetch(`${base}/api/cs2`, { cache: 'no-store', signal: AbortSignal.timeout(35000) })
+    inFlight = fetch('/api/cs2', { cache: 'no-store', signal: AbortSignal.timeout(35000) })
       .then(async response => {
         if (!response.ok) throw new Error(response.status === 429 ? 'rate_limited' : 'unavailable')
         const data: Cs2Data = await response.json()

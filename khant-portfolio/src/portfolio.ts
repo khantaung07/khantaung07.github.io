@@ -57,13 +57,6 @@ export const portfolio = {
       { label: 'GitHub', href: 'https://github.com/khantaung07', icon: 'github' },
       { label: 'LinkedIn', href: 'https://www.linkedin.com/in/khantaung07/', icon: 'linkedin' },
     ] satisfies PortfolioLink[],
-    artwork: {
-      src: null as string | null,
-      label: 'placeholder',
-      title: 'Pikachu',
-      note: 'Art & animation todo',
-      alt: 'Shiny Pikachu surfing above the waves',
-    },
   },
   currently: {
     label: 'Currently:',
@@ -141,7 +134,7 @@ export const portfolio = {
     },
     highlightsTitle: 'Highlights',
     highlights: [
-      { id: 'clip-01', title: 'USP 1v4', src: '/clips/clip1.mp4', poster: '/clips/clip1.jpg' },
+      { id: 'clip-01', title: 'USP 1v4 (Ace)', src: '/clips/clip1.mp4', poster: '/clips/clip1.jpg' },
       { id: 'clip-02', title: 'AWP 4K', src: '/clips/clip2.mp4', poster: '/clips/clip2.jpg' },
       { id: 'clip-03', title: 'Deagle 1v4', src: '/clips/clip3.mp4', poster: '/clips/clip3.jpg' },
       { id: 'clip-04', title: 'AWP 1v4', src: '/clips/clip4.mp4', poster: '/clips/clip4.jpg' },

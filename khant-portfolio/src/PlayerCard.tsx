@@ -45,8 +45,7 @@ export default function PlayerCard() {
   const recent = data?.recent
   const sample = recent && isStat(recent.matchesPlayed)
     ? `Last ${recent.matchesPlayed} 5v5 matches` : 'Recent 5v5 matches'
-  const summaryNote = 'Leetify profile summary. Scores and units follow Leetify’s display.'
-  const recentNote = recent ? `${sample}, as supplied by Leetify.` : 'Leetify’s recent 5v5 summary is unavailable.'
+  const recentNote = recent ? sample : 'Leetify’s recent 5v5 summary is unavailable.'
   const premierBest = bestRank(data, 'matchmaking')
   const faceitBest = bestRank(data, 'faceit')
   const faceitElo = isStat(data?.faceit?.elo) && data.faceit.elo > 0 ? data.faceit.elo : null
@@ -86,15 +85,15 @@ export default function PlayerCard() {
       </div>
 
       <dl className="player-stats">
-        <Metric label="Leetify Rating" value={rating} note={isStat(recent?.leetifyRating) ? recentNote : summaryNote} />
-        <Metric label="Win Rate" value={isStat(winRate) ? `${(winRate * 100).toFixed(0)}%` : '—'} note={recent ? recentNote : summaryNote} />
+        <Metric label="Leetify Rating" value={rating} note={isStat(recent?.leetifyRating) ? recentNote : ''} />
+        <Metric label="Win Rate" value={isStat(winRate) ? `${(winRate * 100).toFixed(0)}%` : '—'} note={recent ? recentNote : ''} />
         <Metric label="K/D" value={formatStat(recent?.kdRatio, 2)} note={recentNote} />
-        <Metric label="Aim" value={formatStat(profile?.rating.aim)} note={summaryNote} />
-        <Metric label="Utility" value={formatStat(profile?.rating.utility)} note={summaryNote} />
-        <Metric label="Positioning" value={formatStat(profile?.rating.positioning)} note={summaryNote} />
-        <Metric label="Clutch" value={formatRating(profile?.rating.clutch)} note={`${summaryNote} Clutch rating, not clutch win percentage.`} />
-        <Metric label="Preaim" value={formatStat(profile?.stats.preaim, 2, '°')} note={`${summaryNote} Crosshair placement in degrees.`} />
-        <Metric label="Time to Damage" value={formatStat(profile?.stats.reaction_time_ms, 0, ' ms')} note={`${summaryNote} Time to first damage after spotting an enemy.`} />
+        <Metric label="Aim" value={formatStat(profile?.rating.aim)} note="Aim rated from 0-100." />
+        <Metric label="Utility" value={formatStat(profile?.rating.utility)} note="Utility usage (grenades) rated 0-100." />
+        <Metric label="Positioning" value={formatStat(profile?.rating.positioning)} note="0-100." />
+        <Metric label="Clutch" value={formatRating(profile?.rating.clutch)} note="Clutch rating, not clutch win percentage." />
+        <Metric label="Preaim" value={formatStat(profile?.stats.preaim, 2, '°')} note="Crosshair placement in degrees." />
+        <Metric label="Time to Damage" value={formatStat(profile?.stats.reaction_time_ms, 0, ' ms')} note="Time to first damage after spotting an enemy." />
         <Metric label="HS Kill %" value={formatStat(recent?.headshotKillPercentage, 1, '%')} note={`${recentNote} Headshot kills as a percentage of kills.`} />
       </dl>
     </div>

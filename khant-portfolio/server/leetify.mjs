@@ -30,11 +30,6 @@ export async function handleCs2Request(request, response) {
   response.setHeader('Cache-Control', 'no-store, max-age=0')
   response.setHeader('Content-Type', 'application/json; charset=utf-8')
   response.setHeader('X-Content-Type-Options', 'nosniff')
-  response.setHeader('Vary', 'Origin')
-  // Optional when hosting the API separately from a static GitHub Pages build.
-  if (process.env.CS2_ALLOWED_ORIGIN && request.headers.origin === process.env.CS2_ALLOWED_ORIGIN) {
-    response.setHeader('Access-Control-Allow-Origin', process.env.CS2_ALLOWED_ORIGIN)
-  }
   if (request.method !== 'GET') {
     response.setHeader('Allow', 'GET')
     response.writeHead(405).end(JSON.stringify({ error: 'method_not_allowed' }))

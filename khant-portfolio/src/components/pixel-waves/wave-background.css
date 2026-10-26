@@ -1,0 +1,98 @@
+.pixel-waves {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  isolation: isolate;
+  --surfer-width: clamp(96px, 10vw, 128px);
+}
+
+.pixel-waves__canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.pixel-waves__surfer {
+  position: absolute;
+  z-index: 1;
+  top: 86.6667%;
+  left: 72%;
+  width: var(--surfer-width);
+  transform-origin: 50% 87.5%;
+  transform: translate(-50%, -87.5%) rotate(var(--wave-angle, 0deg));
+}
+
+.pixel-waves__character {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  background: none;
+  appearance: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transform-origin: 50% 60%;
+}
+
+.pixel-waves__character:focus-visible {
+  outline: 2px dashed var(--yellow);
+  outline-offset: 8px;
+}
+
+.pixel-waves__character--flipping {
+  animation: pixel-waves-flip 880ms cubic-bezier(.35, 0, .45, 1) both;
+}
+
+.pixel-waves__splash {
+  position: absolute;
+  top: 87.5%;
+  left: 50%;
+  width: 3px;
+  height: 3px;
+  background: #f5f5f2;
+  box-shadow: -20px -1px #f5f5f2, -13px -7px #f5f5f2, -6px -11px #f5f5f2, 7px -12px #f5f5f2, 15px -6px #f5f5f2, 22px -1px #f5f5f2;
+  pointer-events: none;
+  animation: pixel-waves-splash 300ms ease-out both;
+}
+
+@keyframes pixel-waves-flip {
+  0% { transform: translateY(0) rotate(0deg); }
+  10% { transform: translateY(2%) rotate(-4deg); }
+  40% { transform: translateY(-58%) rotate(130deg); }
+  64% { transform: translateY(-53%) rotate(260deg); }
+  88% { transform: translateY(-10%) rotate(354deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+@keyframes pixel-waves-splash {
+  from { opacity: 1; transform: scale(.5); }
+  to { opacity: 0; transform: translateY(-8px) scale(1.7); }
+}
+
+@keyframes pixel-waves-nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-waves__character--flipping { animation: pixel-waves-nudge 120ms linear; }
+  .pixel-waves__splash { animation-duration: 1ms; }
+}
+
+.pixel-waves__sprite {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  user-select: none;
+}
+
+@media (max-width: 480px) {
+  .pixel-waves { --surfer-width: clamp(56px, 16vw, 72px); }
+}
