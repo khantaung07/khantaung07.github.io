@@ -1,6 +1,6 @@
 # ka.
 
-[Personal website](ka-phi-dusky.vercel.app)
+[Personal website](https://ka-phi-dusky.vercel.app)
 
 Experience, projects, and live CS2 stats. Built with React, TypeScript, Vite, and plain CSS.
 
